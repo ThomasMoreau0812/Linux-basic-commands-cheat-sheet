@@ -1,432 +1,731 @@
-# Linux-basic-commands-cheat-sheet
-
-🐧 Ubuntu 26 Command Cheat Sheet
+# 🐧 Ubuntu 26 Command Cheat Sheet
 
 Een praktische cheat sheet met de belangrijkste Ubuntu/Linux commands.
-💡 Je kunt de commands rechtstreeks kopiëren uit de codeblokken.
 
-📑 Contents
+> 💡 Klik op het kopieer-icoontje bij een command om het direct te kopiëren.
 
-📁 Files & Directories
+---
 
-📖 Files bekijken
+## 📑 Contents
 
-🔎 Zoeken
+- [📁 Files & Directories](#-files--directories)
+- [📖 Files bekijken](#-files-bekijken)
+- [🔎 Zoeken](#-zoeken)
+- [📦 Software & APT](#-software--apt)
+- [⚙️ Services](#️-services)
+- [🌐 Networking](#-networking)
+- [👤 Users](#-users)
+- [🔐 Permissions](#-permissions)
+- [💾 Disk & Storage](#-disk--storage)
+- [🧠 Processes](#-processes)
+- [📜 Logs](#-logs)
+- [🔑 SSH](#-ssh)
+- [🗜️ Archives](#️-archives)
+- [⌨️ Shortcuts](#️-shortcuts)
+- [⭐ Commands om eerst te leren](#-commands-om-eerst-te-leren)
+- [⚠️ Dangerous Commands](#️-dangerous-commands)
 
-📦 Software & APT
+---
 
-⚙️ Services
+# 📁 Files & Directories
 
-🌐 Networking
+## Huidige directory
 
-👤 Users
-
-🔐 Permissions
-
-💾 Disk & Storage
-
-🧠 Processes
-
-📜 Logs
-
-🔑 SSH
-
-🗜️ Archives
-
-⌨️ Shortcuts
-
-⭐ Commands om eerst te leren
-
-⚠️ Dangerous Commands
-
-📁 Files & Directories
-Huidige directory
+```bash
 pwd
+````
 
+ ## Bestanden bekijken
 
-Toont waar je momenteel bent.
-
-Bestanden bekijken
+```
 ls
+```
 
-
-Toont bestanden en mappen.
-
+```
 ls -la
+```
 
+ ## Directory veranderen
 
-Toont alle bestanden, inclusief verborgen bestanden.
-
-Directory veranderen
+```
 cd folder
+```
 
-
-Ga naar een specifieke map.
-
+```
 cd ..
+```
 
-
-Ga één map omhoog.
-
+```
 cd ~
+```
 
-
-Ga naar je home directory.
-
+```
 cd -
+```
 
+ ## Directory maken
 
-Ga terug naar de vorige directory.
-
-Directory maken
+```
 mkdir folder
+```
 
-Bestand maken
+ ## Bestand maken
+
+```
 touch file.txt
+```
 
-Bestand kopiëren
+ ## Bestand kopiëren
+
+```
 cp file.txt backup.txt
+```
 
-Directory kopiëren
+ ## Directory kopiëren
+
+```
 cp -r folder backup
+```
 
-Bestand verplaatsen / hernoemen
+ ## Bestand verplaatsen / hernoemen
+
+```
 mv old.txt new.txt
+```
 
+```
 mv file.txt folder/
+```
 
-Bestand verwijderen
+ ## Bestand verwijderen
+
+```
 rm file.txt
+```
 
-Directory verwijderen
+ ## Directory verwijderen
+
+```
 rm -r folder
+```
 
+ > ⚠️ `rm` verwijdert bestanden direct.
 
-⚠️ rm verwijdert bestanden direct. Ze komen meestal niet in een prullenbak terecht.
+---
 
-📖 Files bekijken
-Bestand volledig bekijken
+ # 📖 Files bekijken
+
+ ## Bestand volledig bekijken
+
+```
 cat file.txt
+```
 
-Bestand pagina voor pagina bekijken
+ ## Bestand pagina voor pagina bekijken
+
+```
 less file.txt
+```
 
-Eerste regels bekijken
+ ## Eerste regels bekijken
+
+```
 head file.txt
+```
 
-Laatste regels bekijken
+ ## Laatste regels bekijken
+
+```
 tail file.txt
+```
 
-Logbestand live bekijken
+ ## Logbestand live bekijken
+
+```
 tail -f logfile.log
+```
 
-Bestand bewerken met Nano
+ ## Bestand bewerken
+
+```
 nano file.txt
+```
 
-Nano shortcuts
-Shortcut	Functie
-CTRL + O	Opslaan
-CTRL + X	Afsluiten
-CTRL + W	Zoeken
-CTRL + K	Regel knippen
-CTRL + U	Plakken
-🔎 Zoeken
-Bestand zoeken
+ ### Nano shortcuts
+
+ | Shortcut | Functie |
+| --- | --- |
+| `CTRL + O` | Opslaan |
+| `CTRL + X` | Afsluiten |
+| `CTRL + W` | Zoeken |
+| `CTRL + K` | Regel knippen |
+| `CTRL + U` | Plakken |
+
+---
+
+ # 🔎 Zoeken
+
+ ## Bestand zoeken
+
+```
 find . -name "file.txt"
+```
 
-Alle .conf bestanden zoeken
+ ## Configuratiebestanden zoeken
+
+```
 find /etc -name "*.conf"
+```
 
-Tekst zoeken in een bestand
+ ## Tekst zoeken
+
+```
 grep "error" file.txt
+```
 
-Recursief zoeken
+ ## Recursief zoeken
+
+```
 grep -r "error" /var/log/
+```
 
-Locatie van een command bekijken
+ ## Locatie van een command vinden
+
+```
 which python3
+```
 
-📦 Software & APT
+---
 
-Ubuntu gebruikt APT voor het beheren van packages.
+ # 📦 Software & APT
 
-Package lists updaten
+ ## Package lists updaten
+
+```
 sudo apt update
+```
 
-Packages upgraden
+ ## Packages upgraden
+
+```
 sudo apt upgrade
+```
 
-Software installeren
+ ## Software installeren
+
+```
 sudo apt install package
+```
 
+ Voorbeeld:
 
-Bijvoorbeeld:
-
+```
 sudo apt install git curl htop
+```
 
-Software verwijderen
+ ## Software verwijderen
+
+```
 sudo apt remove package
+```
 
-Software + configuratie verwijderen
+ ## Software + configuratie verwijderen
+
+```
 sudo apt purge package
+```
 
-Ongebruikte packages verwijderen
+ ## Ongebruikte packages verwijderen
+
+```
 sudo apt autoremove
+```
 
-Package zoeken
+ ## Package zoeken
+
+```
 apt search package
+```
 
-Package informatie bekijken
+ ## Package informatie bekijken
+
+```
 apt show package
+```
 
-⚙️ Services
+---
 
-Ubuntu gebruikt systemctl om services te beheren.
+ # ⚙️ Services
 
-Status bekijken
+ ## Status bekijken
+
+```
 systemctl status service
+```
 
-Service starten
+ ## Service starten
+
+```
 sudo systemctl start service
+```
 
-Service stoppen
+ ## Service stoppen
+
+```
 sudo systemctl stop service
+```
 
-Service herstarten
+ ## Service herstarten
+
+```
 sudo systemctl restart service
+```
 
-Service automatisch starten bij boot
+ ## Service automatisch starten
+
+```
 sudo systemctl enable service
+```
 
-Automatisch starten uitschakelen
+ ## Automatisch starten uitschakelen
+
+```
 sudo systemctl disable service
+```
 
-Voorbeeld: SSH
+ ### Voorbeeld met SSH
+
+```
 systemctl status ssh
+```
 
+```
 sudo systemctl restart ssh
+```
 
-🌐 Networking
-IP-adressen bekijken
+---
+
+ # 🌐 Networking
+
+ ## IP-adressen bekijken
+
+```
 ip addr
+```
 
+ Kort:
 
-Kort:
-
+```
 ip a
+```
 
-Routing bekijken
+ ## Routing bekijken
+
+```
 ip route
+```
 
-Internetverbinding testen
+ ## Internet testen
+
+```
 ping 8.8.8.8
+```
 
-DNS testen
+ ## DNS testen
+
+```
 ping google.com
+```
 
-Luisterende ports bekijken
+ ## Luisterende ports bekijken
+
+```
 ss -tulpn
+```
 
-HTTP request maken
+ ## HTTP request
+
+```
 curl https://example.com
+```
 
-Bestand downloaden
+ ## Bestand downloaden
+
+```
 wget https://example.com/file
+```
 
-Lokaal IP bekijken
+ ## Lokaal IP bekijken
+
+```
 hostname -I
+```
 
-DNS informatie
+ ## DNS informatie
+
+```
 resolvectl status
+```
 
-👤 Users
-Huidige gebruiker
+---
+
+ # 👤 Users
+
+ ## Huidige gebruiker
+
+```
 whoami
+```
 
-User ID en groups
+ ## User ID en groups
+
+```
 id
+```
 
-Ingelogde gebruikers
+ ## Ingelogde gebruikers
+
+```
 who
+```
 
-Command uitvoeren als administrator
+ ## Command uitvoeren als administrator
+
+```
 sudo command
+```
 
+ Voorbeeld:
 
-Bijvoorbeeld:
-
+```
 sudo apt update
+```
 
-Wachtwoord veranderen
+ ## Wachtwoord veranderen
+
+```
 passwd
+```
 
-Naar een andere gebruiker switchen
+ ## Andere gebruiker
+
+```
 su - username
+```
 
-🔐 Permissions
+---
 
-Linux gebruikt drie belangrijke permissions:
+ # 🔐 Permissions
 
+ Linux gebruikt:
+
+```
 r = read
 w = write
 x = execute
+```
 
-Permissions bekijken
+ ## Permissions bekijken
+
+```
 ls -l
+```
 
-Bestand executable maken
+ ## Bestand executable maken
+
+```
 chmod +x script.sh
+```
 
-Permissions instellen
+ ## Permissions instellen
+
+```
 chmod 644 file.txt
+```
 
+```
 chmod 755 script.sh
+```
 
-Owner veranderen
+ ## Owner veranderen
+
+```
 sudo chown user:group file.txt
+```
 
-Veelgebruikte permissions
-Permission	Betekenis
-644	rw-r--r--
-755	rwxr-xr-x
-700	rwx------
-777	rwxrwxrwx
+ ### Veelgebruikte permissions
 
-⚠️ Gebruik chmod 777 liever niet. Het geeft iedereen volledige toegang.
+ | Permission | Betekenis |
+| --- | --- |
+| `644` | `rw-r--r--` |
+| `755` | `rwxr-xr-x` |
+| `700` | `rwx------` |
+| `777` | `rwxrwxrwx` |
 
-💾 Disk & Storage
-Beschikbare diskruimte
+> ⚠️ Gebruik `chmod 777` liever niet.
+
+---
+
+ # 💾 Disk & Storage
+
+ ## Beschikbare diskruimte
+
+```
 df -h
+```
 
-Grootte van een directory
+ ## Grootte van een directory
+
+```
 du -sh folder
+```
 
-Grootte van alles in huidige directory
+ ## Grootte van alles in huidige directory
+
+```
 du -sh *
+```
 
-Disks en partitions bekijken
+ ## Disks en partitions
+
+```
 lsblk
+```
 
-Mounted filesystems bekijken
+ ## Mounted filesystems
+
+```
 mount
+```
 
-🧠 Processes
-Alle processen bekijken
+---
+
+ # 🧠 Processes
+
+ ## Alle processen
+
+```
 ps aux
+```
 
-Live processen bekijken
+ ## Live processen
+
+```
 top
+```
 
-Htop gebruiken
+ ## Htop
+
+```
 htop
+```
 
+ Installeren:
 
-Installeren:
-
+```
 sudo apt install htop
+```
 
-Process zoeken
+ ## Process zoeken
+
+```
 pgrep firefox
+```
 
-Process stoppen
+ ## Process stoppen
+
+```
 kill PID
+```
 
+ Voorbeeld:
 
-Bijvoorbeeld:
-
+```
 kill 1234
+```
 
-Process forceren te stoppen
+ ## Process forceren te stoppen
+
+```
 kill -9 PID
+```
 
+ > ⚠️ Gebruik `kill -9` alleen wanneer normaal stoppen niet werkt.
 
-⚠️ Gebruik kill -9 alleen wanneer normaal stoppen niet werkt.
+---
 
-📜 Logs
-Alle system logs
+ # 📜 Logs
+
+ ## Alle system logs
+
+```
 journalctl
+```
 
-Logs van huidige boot
+ ## Logs van huidige boot
+
+```
 journalctl -b
+```
 
-Logs live volgen
+ ## Logs live volgen
+
+```
 journalctl -f
+```
 
-Logs van een service
+ ## Logs van een service
+
+```
 journalctl -u ssh
+```
 
-Service logs van huidige boot
+ ## Service logs van huidige boot
+
+```
 journalctl -u ssh -b
+```
 
-🔑 SSH
-Verbinden met een andere computer
+---
+
+ # 🔑 SSH
+
+ ## Verbinden met een andere computer
+
+```
 ssh username@192.168.1.100
+```
 
-Bestand naar andere computer kopiëren
+ ## Bestand kopiëren
+
+```
 scp file.txt username@192.168.1.100:/home/username/
+```
 
-Directory naar andere computer kopiëren
+ ## Directory kopiëren
+
+```
 scp -r folder username@192.168.1.100:/home/username/
+```
 
-🗜️ Archives
-.tar.gz maken
+---
+
+ # 🗜️ Archives
+
+ ## `.tar.gz` maken
+
+```
 tar -czf backup.tar.gz folder/
+```
 
-.tar.gz uitpakken
+ ## `.tar.gz` uitpakken
+
+```
 tar -xzf backup.tar.gz
+```
 
-ZIP maken
+ ## ZIP maken
+
+```
 zip -r backup.zip folder/
+```
 
-ZIP uitpakken
+ ## ZIP uitpakken
+
+```
 unzip backup.zip
+```
 
-🖥️ System Commands
-Systeeminformatie
+---
+
+ # 🖥️ System Commands
+
+ ## Systeeminformatie
+
+```
 uname -a
+```
 
-Computernaam
+ ## Computernaam
+
+```
 hostname
+```
 
-Datum en tijd
+ ## Datum en tijd
+
+```
 date
+```
 
-Hoelang draait het systeem?
+ ## Hoelang draait het systeem?
+
+```
 uptime
+```
 
-Systeem rebooten
+ ## Reboot
+
+```
 sudo reboot
+```
 
-Systeem uitschakelen
+ ## Shutdown
+
+```
 sudo poweroff
+```
 
-🧹 Terminal
-Terminal leegmaken
+---
+
+ # 🧹 Terminal
+
+ ## Terminal leegmaken
+
+```
 clear
+```
 
-Command history bekijken
+ ## Command history
+
+```
 history
+```
 
-Laatste command opnieuw uitvoeren
+ ## Laatste command opnieuw uitvoeren
+
+```
 !!
+```
 
-Laatste command met sudo uitvoeren
+ ## Laatste command met sudo
+
+```
 sudo !!
+```
 
-⌨️ Shortcuts
-Shortcut	Functie
-CTRL + C	Command stoppen
-CTRL + Z	Command pauzeren
-CTRL + D	Terminal/shell afsluiten
-CTRL + L	Terminal leegmaken
-CTRL + R	Command history doorzoeken
-TAB	Autocomplete
-↑	Vorig command
-↓	Volgend command
-⭐ Commands om eerst te leren
+---
 
-Als je net begint met Linux, leer deze eerst:
+ # ⌨️ Shortcuts
 
+ | Shortcut | Functie |
+| --- | --- |
+| `CTRL + C` | Command stoppen |
+| `CTRL + Z` | Command pauzeren |
+| `CTRL + D` | Shell afsluiten |
+| `CTRL + L` | Terminal leegmaken |
+| `CTRL + R` | History doorzoeken |
+| `TAB` | Autocomplete |
+| `↑` | Vorig command |
+| `↓` | Volgend command |
+
+---
+
+ # ⭐ Commands om eerst te leren
+
+ Als je net begint met Linux, leer deze eerst:
+
+```
 pwd
 ls -la
 cd
@@ -450,8 +749,13 @@ du -sh
 ps
 kill
 journalctl
+```
 
-🧠 Command Map
+---
+
+ # 🧠 Command Map
+
+```
 FILES
 ├── ls
 ├── cd
@@ -469,8 +773,7 @@ TEXT
 └── nano
 
 SOFTWARE
-├── apt
-└── dpkg
+└── apt
 
 SERVICES
 └── systemctl
@@ -501,48 +804,79 @@ PERMISSIONS
 
 LOGS
 └── journalctl
+```
 
-⚠️ Dangerous Commands
+---
 
-Wees voorzichtig met deze commands:
+ # ⚠️ Dangerous Commands
 
+ Wees voorzichtig met:
+
+```
 rm -rf
+```
 
+```
 sudo rm
+```
 
+```
 chmod -R 777
+```
 
+```
 sudo dd
+```
 
+ > ⚠️ Controleer altijd wat een command doet voordat je het uitvoert met `sudo`, `rm` of andere destructieve opties.
 
-Controleer altijd eerst wat een command gaat doen voordat je het uitvoert met sudo of rm -rf.
+---
 
-📚 Quick Reference
-Taak	Command
-Current directory	pwd
-Files bekijken	ls -la
-Directory veranderen	cd
-Directory maken	mkdir
-Bestand maken	touch
-Kopiëren	cp
-Verplaatsen	mv
-Verwijderen	rm
-Bestand bekijken	cat
-Bestand bewerken	nano
-Zoeken	find
-Tekst zoeken	grep
-Installeren	sudo apt install
-Packages updaten	sudo apt update
-Packages upgraden	sudo apt upgrade
-Service status	systemctl status
-IP bekijken	ip a
-Processes	ps aux
-Disk space	df -h
-Folder size	du -sh
-Logs	journalctl
-SSH	ssh user@host
-Reboot	sudo reboot
-Shutdown	sudo poweroff
-🚀 Happy Hacking!
+ # 📚 Quick Reference
 
-Learn the command, understand what it does, then run it.
+ | Taak | Command |
+| --- | --- |
+| Current directory | `pwd` |
+| Files bekijken | `ls -la` |
+| Directory veranderen | `cd` |
+| Directory maken | `mkdir` |
+| Bestand maken | `touch` |
+| Kopiëren | `cp` |
+| Verplaatsen | `mv` |
+| Verwijderen | `rm` |
+| Bestand bekijken | `cat` |
+| Bestand bewerken | `nano` |
+| Zoeken | `find` |
+| Tekst zoeken | `grep` |
+| Installeren | `sudo apt install` |
+| Packages updaten | `sudo apt update` |
+| Packages upgraden | `sudo apt upgrade` |
+| Service status | `systemctl status` |
+| IP bekijken | `ip a` |
+| Processes | `ps aux` |
+| Disk space | `df -h` |
+| Folder size | `du -sh` |
+| Logs | `journalctl` |
+| SSH | `ssh user@host` |
+| Reboot | `sudo reboot` |
+| Shutdown | `sudo poweroff` |
+
+---
+
+ ## 🚀 Happy Linux-ing!
+
+ > **Learn the command → understand the command → run the command.**
+
+`````
+
+**Let op:** in dit antwoord kan de chatweergave zelf nog steeds iets aan de Markdown tonen. Maar de inhoud die je naar GitHub kopieert bevat nu alleen standaard Markdown. De cruciale vorm is bijvoorbeeld:
+
+````text
+```bash
+sudo apt update
+`````
+
+```
+
+Dus **geen `id=...` achter `bash`**.
+```
